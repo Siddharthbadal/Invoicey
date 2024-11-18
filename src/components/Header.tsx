@@ -6,14 +6,19 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import Container from '@/components/Container'
+import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header>
+    <header className='mt-8 mb-12'>
       <Container>
 
       <div className='flex justify-between items-center gap-4'>      
-            <p>Invoicey</p>
+            <p className='font-semibold'>
+              <Link href="/dashboard">
+                Invoicey
+              </Link>
+            </p>
             <div>
                     <SignedOut>
                     <SignInButton />

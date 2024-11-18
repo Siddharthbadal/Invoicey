@@ -8,6 +8,7 @@ import {
     TableRow,
   } from "@/components/ui/table"
 import { db } from '@/db'
+import { eq } from "drizzle-orm"
 import { Invoices } from "@/db/schema" 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -15,12 +16,20 @@ import Container from '@/components/Container'
 import { CirclePlus } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+import { auth } from "@clerk/nextjs/server"
 
 
 export default async function Dashboard() {
-  const results = await db.select().from(Invoices);
+  const { userId } = await auth()
+
+  if ( !userId ) return;
+
+  const results = await db.select()
+  .from(Invoices)
+  .where(eq(Invoices.userId, userId))
+
   return (
-    <main className=" h-full my-12">
+    <main className=" h-full ">
     <Container>
 
     <div className="flex justify-between">

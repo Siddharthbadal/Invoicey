@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { createAction } from "@/app/actions/formactions";
 import SubmitButton from "@/components/SubmitButton";
+import Container from '@/components/Container'
 
 
 export default  function AddInvoice() {
@@ -27,13 +28,15 @@ export default  function AddInvoice() {
 
 
 return (
-  <main className="flex flex-col h-full gap-6 max-w-5xl w-full mx-auto my-12">
+  <main className="h-full gap-6">
+    <Container>
+
   <div className="flex justify-between">
-      <h1 className="text-3xl font-bold">Invoices</h1>
+      <h1 className="text-3xl font-bold mb-6">Add Invoice</h1>
       
   </div>
        
-    <Form action={createAction} onSubmit={handleOnSubmit} className="grid gap-4 max-w-xs">
+    <Form action={createAction} onSubmit={handleOnSubmit} className="grid gap-4 max-w-md">
       <div>
         <Label htmlFor="billing-name" className="block mb-2 font-semibold text-md">Billing Name</Label>
         <Input name="billing-name" id="billing-name" type="text" autoComplete="off" />
@@ -57,6 +60,7 @@ return (
 
       </div>
     </Form>
+    </Container>
 
 
   
