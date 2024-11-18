@@ -7,9 +7,11 @@ import { Button } from '@/components/ui/button';
 import Container from '@/components/Container'
 import Link from 'next/link';
 
+type Params = Promise<{ invoiceId: string }>
 
-export default async function InvoicePage({ params }: {params: {invoiceId: string;}}) {
- const invoiceId =parseInt(params.invoiceId);
+export default async function InvoicePage(props: { params: Params }) {
+  const params = await props.params
+  const invoiceId = params.invoiceId
 
  if ( isNaN(invoiceId)){
   throw new Error('Invalid Invoice ID')
