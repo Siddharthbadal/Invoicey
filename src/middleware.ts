@@ -6,12 +6,12 @@ const isPublic = createRouteMatcher([
   '/sign-up(.*)'
 ])
 
-const isProtected = createRouteMatcher(
-  ['/dashboard', 
-    'invoices/:invoiceId', 
-    '/invoices/new'
-  ]
-)
+// const isProtected = createRouteMatcher(
+//   ['/dashboard', 
+//     'invoices/:invoiceId', 
+//     '/invoices/new'
+//   ]
+// )
 
 export default clerkMiddleware(async (auth, request)=>{
     if ( !isPublic(request)){
