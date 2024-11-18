@@ -11,7 +11,7 @@ type Params = Promise<{ invoiceId: string }>
 
 export default async function InvoicePage(props: { params: Params }) {
   const params = await props.params
-  const invoiceId = params.invoiceId
+  const invoiceId = parseInt(params.invoiceId)
 
  if ( isNaN(invoiceId)){
   throw new Error('Invalid Invoice ID')
